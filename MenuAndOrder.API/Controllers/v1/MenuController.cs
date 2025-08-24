@@ -16,21 +16,18 @@ namespace MenuAndOrder.API.Controllers.v1
         }
 
         [HttpGet]
-        [Route("get-menus")]
         public async Task<IActionResult> GetMenus()
         {
             return Ok(await _service.GetMenus());
         }
 
-        [HttpGet]
-        [Route("get-menu-by-id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetMenuById(long id)
         {
             return Ok(await _service.GetMenuById(id));
         }
 
         [HttpPost]
-        [Route("add-menu")]
         public async Task<IActionResult> AddMenu([FromBody] AddMenuRequest request)
         {
             if (!ModelState.IsValid)
@@ -43,8 +40,7 @@ namespace MenuAndOrder.API.Controllers.v1
 
         }
 
-        [HttpPut]
-        [Route("update-menu")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMenu(long id, [FromBody] UpdateMenuRequest request)
         {
             if (!ModelState.IsValid)
@@ -57,8 +53,7 @@ namespace MenuAndOrder.API.Controllers.v1
 
         }
 
-        [HttpDelete]
-        [Route("delete-menu")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMenu(long id)
         {
             if (!ModelState.IsValid)

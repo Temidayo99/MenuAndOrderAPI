@@ -14,7 +14,6 @@ namespace MenuAndOrder.API.Controllers.v1
             _service = service;
         }
         [HttpPost]
-        [Route("create-order")]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request)
         {
             if (!ModelState.IsValid)
@@ -27,8 +26,7 @@ namespace MenuAndOrder.API.Controllers.v1
 
         }
 
-        [HttpGet]
-        [Route("get-order-by-id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderById(long id)
         {
             if (!ModelState.IsValid)
@@ -42,7 +40,6 @@ namespace MenuAndOrder.API.Controllers.v1
         }
 
         [HttpGet]
-        [Route("get-all-orders")]
         public async Task<IActionResult> GetAllOrders()
         {
             if (!ModelState.IsValid)
@@ -55,8 +52,7 @@ namespace MenuAndOrder.API.Controllers.v1
 
         }
 
-        [HttpPatch]
-        [Route("update-status")]
+        [HttpPatch("{id}/status")]
         public async Task<IActionResult> UpdateOrderStatus(long id, UpdateOrderStatusRequest request)
         {
             if (!ModelState.IsValid)
